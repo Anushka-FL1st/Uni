@@ -8,12 +8,19 @@ import Model.StudentModel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class StudentController {
     private Connection connection;
 
     public StudentController(Connection connection) {
         this.connection = connection;
+    }
+
+    public StudentController() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     // Add Student
@@ -59,6 +66,28 @@ public class StudentController {
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
+        }
+    }
+    
+    
+    public void loadAllStudents(javax.swing.JTable table) {
+        try {
+            ArrayList<StudentModel> students = StudentModel.getAllStudents();
+            DefaultTableModel model = (DefaultTableModel) table.getModel();
+            model.setRowCount(0);
+
+            for (StudentModel student : students) {
+                model.addRow(new Object[]{
+                    student.getStudentId(),
+                    student.getName(),
+                    student.getPhoneNo(),
+                    student.getCourse(),
+                    student.getPayment(),
+                    student.getDepartment()
+                });
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
         }
     }
 }

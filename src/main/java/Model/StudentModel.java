@@ -4,6 +4,11 @@
  */
 package Model;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
 public class StudentModel {
     private String studentId;
     private String name;
@@ -43,5 +48,31 @@ public class StudentModel {
 
     public String getDepartment() {
         return department;
+    }
+    
+     // Static method to fetch all students
+    public static ArrayList<StudentModel> getAllStudents() {
+        ArrayList<StudentModel> students = new ArrayList<>();
+        try {
+            DatabaseConnection databaseConnection = new DatabaseConnection();
+            Connection connection = databaseConnection.getConnection();
+            String sql = "SELECT * FROM students"; // Ensure the table has the correct schema
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                students.add(new StudentModel(
+                    rs.getString("StudentId"),
+                    rs.getString("Name"),
+                    rs.getString("PhoneNo"),
+                    rs.getString("Course"),
+                    rs.getDouble("Payment"),
+                    rs.getString("Department")
+                ));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return students;
     }
 }

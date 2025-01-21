@@ -4,6 +4,11 @@
  */
 package Model;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
 
 public class CourseModel {
     private String courseId;
@@ -31,5 +36,30 @@ public class CourseModel {
     public void setDepartmentId(String departmentId) { this.departmentId = departmentId; }
     public String getDuration() { return duration; }
     public void setDuration(String duration) { this.duration = duration; }
+    
+    // Static method to fetch all courses from the database
+    public static ArrayList<CourseModel> getAllCourses() {
+        ArrayList<CourseModel> courses = new ArrayList<>();
+        try {
+            DatabaseConnection databaseConnection = new DatabaseConnection();
+            Connection connection = databaseConnection.getConnection();
+            String sql = "SELECT * FROM courses"; // Database table name
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                courses.add(new CourseModel(
+                        rs.getString("course_id"),
+                        rs.getString("name"),
+                        rs.getInt("credits"),
+                        rs.getString("department_id"),
+                        rs.getString("duration")
+                ));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return courses;
+    }
 }
 

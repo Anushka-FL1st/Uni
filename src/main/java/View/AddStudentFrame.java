@@ -22,11 +22,14 @@ public class AddStudentFrame extends javax.swing.JFrame {
     
     public AddStudentFrame() {
         initComponents();
+        
         // Get the database connection
     Connection connection = DatabaseConnection.getConnection();
     
     // Initialize the controller
     studentController = new StudentController(connection);
+    studentController.loadAllStudents(tblStudentsDetails);
+    
         
     }
 
@@ -366,7 +369,7 @@ public class AddStudentFrame extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Failed to update student.");
         }
-        
+        studentController.loadAllStudents(tblStudentsDetails);
     }//GEN-LAST:event_btnUpdStdActionPerformed
 
     private void btnDelStdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelStdActionPerformed
@@ -377,6 +380,7 @@ public class AddStudentFrame extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Failed to delete student.");
         }
+        studentController.loadAllStudents(tblStudentsDetails);
     }//GEN-LAST:event_btnDelStdActionPerformed
 
     private void btnAddStdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddStdActionPerformed
@@ -395,6 +399,7 @@ public class AddStudentFrame extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Failed to add student.");
         }
+        studentController.loadAllStudents(tblStudentsDetails);
     }//GEN-LAST:event_btnAddStdActionPerformed
 
     /**

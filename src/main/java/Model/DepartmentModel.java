@@ -4,6 +4,11 @@
  */
 package Model;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
 public class DepartmentModel {
     private String departmentId;
     private String name;
@@ -26,6 +31,30 @@ public class DepartmentModel {
     public void setHeadOfDepartment(String headOfDepartment) { this.headOfDepartment = headOfDepartment; }
     public String getLocation() { return location; }
     public void setLocation(String location) { this.location = location; }
+    
+    // Method to fetch all departments from the database
+    public static ArrayList<DepartmentModel> getAllDepartments() {
+        ArrayList<DepartmentModel> departments = new ArrayList<>();
+        try {
+            DatabaseConnection databaseConnection = new DatabaseConnection();
+            Connection connection = databaseConnection.getConnection();
+            String sql = "SELECT * FROM departments"; // Database table name
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                departments.add(new DepartmentModel(
+                        rs.getString("department_id"),
+                        rs.getString("name"),
+                        rs.getString("head_of_department"),
+                        rs.getString("location")
+                ));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return departments;
+    }
 }
 
 

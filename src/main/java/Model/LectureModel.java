@@ -5,6 +5,11 @@
 
 package Model;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
 public class LectureModel {
     private String lectureId;
     private String name;
@@ -41,5 +46,31 @@ public class LectureModel {
 
     public String getSpecialization() { return specialization; }
     public void setSpecialization(String specialization) { this.specialization = specialization; }
+    
+    // Fetch all lectures from the database
+    public static ArrayList<LectureModel> getAllLectures() {
+        ArrayList<LectureModel> lectures = new ArrayList<>();
+        try {
+            DatabaseConnection databaseConnection = new DatabaseConnection();
+            Connection connection = databaseConnection.getConnection();
+            String sql = "SELECT * FROM lectures"; // Database table name
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                lectures.add(new LectureModel(
+                        rs.getString("lecture_id"),
+                        rs.getString("name"),
+                        rs.getString("email"),
+                        rs.getString("phone_no"),
+                        rs.getString("department"),
+                        rs.getString("specialization")
+                ));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return lectures;
+    }
 }
 

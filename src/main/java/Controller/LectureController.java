@@ -12,6 +12,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class LectureController {
     private Connection connection;
@@ -66,6 +68,28 @@ public class LectureController {
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
+        }
+    }
+    
+    // Load all lectures into JTable
+    public void loadAllLectures(javax.swing.JTable table) {
+        try {
+            ArrayList<LectureModel> lectures = LectureModel.getAllLectures(); // Fetch all lectures
+            DefaultTableModel model = (DefaultTableModel) table.getModel();
+            model.setRowCount(0); // Clear existing data
+
+            for (LectureModel lecture : lectures) {
+                model.addRow(new Object[]{
+                        lecture.getLectureId(),
+                        lecture.getName(),
+                        lecture.getEmail(),
+                        lecture.getPhoneNo(),
+                        lecture.getDepartment(),
+                        lecture.getSpecialization()
+                });
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
         }
     }
 }

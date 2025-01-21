@@ -24,6 +24,7 @@ public class AddCoursesFrame extends javax.swing.JFrame {
         initComponents();
         Connection connection = DatabaseConnection.getConnection();
         courseController = new CourseController(connection);
+        courseController.loadAllCourses(tblCourseDetails);
     }
 
     /**
@@ -41,7 +42,7 @@ public class AddCoursesFrame extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblStudentsDetails1 = new javax.swing.JTable();
+        tblCourseDetails = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
         txtCourseDepID = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
@@ -92,7 +93,7 @@ public class AddCoursesFrame extends javax.swing.JFrame {
         jLabel6.setText("Data of Courses");
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, -1));
 
-        tblStudentsDetails1.setModel(new javax.swing.table.DefaultTableModel(
+        tblCourseDetails.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null}
             },
@@ -100,7 +101,7 @@ public class AddCoursesFrame extends javax.swing.JFrame {
                 "Course ID", "Name", "Credits", "Department ID", "Duration"
             }
         ));
-        jScrollPane2.setViewportView(tblStudentsDetails1);
+        jScrollPane2.setViewportView(tblCourseDetails);
 
         jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 900, 290));
 
@@ -255,6 +256,7 @@ public class AddCoursesFrame extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Failed to update course.");
         }
+        courseController.loadAllCourses(tblCourseDetails);
     }//GEN-LAST:event_btnUpdCorActionPerformed
 
     private void btnDelCorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelCorActionPerformed
@@ -270,8 +272,11 @@ public class AddCoursesFrame extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Failed to delete course.");
         }
+        courseController.loadAllCourses(tblCourseDetails);
     }//GEN-LAST:event_btnDelCorActionPerformed
 
+    
+    
     private void btnAddCorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCorActionPerformed
         String courseId = txtCourseID.getText();
         String name = txtCourseName.getText();
@@ -286,6 +291,7 @@ public class AddCoursesFrame extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Failed to add course.");
         } 
+        courseController.loadAllCourses(tblCourseDetails);
     }//GEN-LAST:event_btnAddCorActionPerformed
 
     private void txtCourseIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCourseIDActionPerformed
@@ -344,7 +350,7 @@ public class AddCoursesFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblClose1;
-    private javax.swing.JTable tblStudentsDetails1;
+    private javax.swing.JTable tblCourseDetails;
     private javax.swing.JTextField txtCourseCredit;
     private javax.swing.JTextField txtCourseDepID;
     private javax.swing.JTextField txtCourseID;

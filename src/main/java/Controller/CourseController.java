@@ -8,6 +8,9 @@ import Model.CourseModel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class CourseController {
     private Connection connection;
@@ -57,6 +60,28 @@ public class CourseController {
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
+        }
+    }
+    
+    // Method to load all courses into the JTable
+    public void loadAllCourses(javax.swing.JTable table) {
+        try {
+            ArrayList<CourseModel> courses = CourseModel.getAllCourses(); // Fetch all courses
+            DefaultTableModel model = (DefaultTableModel) table.getModel();
+            model.setRowCount(0); // Clear any previous data
+
+            // Add each course data to the JTable model
+            for (CourseModel course : courses) {
+                model.addRow(new Object[]{
+                    course.getCourseId(),
+                    course.getName(),
+                    course.getCredits(),
+                    course.getDepartmentId(),
+                    course.getDuration()
+                });
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
         }
     }
 }

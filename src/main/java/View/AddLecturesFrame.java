@@ -23,6 +23,7 @@ public class AddLecturesFrame extends javax.swing.JFrame {
         initComponents();
         Connection connection = DatabaseConnection.getConnection();
         lectureController = new LectureController(connection);
+        lectureController.loadAllLectures(tblLecturesDetails);
     }
 
     /**
@@ -40,7 +41,7 @@ public class AddLecturesFrame extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblStudentsDetails1 = new javax.swing.JTable();
+        tblLecturesDetails = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
         txtLecturePhoneNo = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
@@ -93,7 +94,7 @@ public class AddLecturesFrame extends javax.swing.JFrame {
         jLabel6.setText("Data of Lectures");
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, -1));
 
-        tblStudentsDetails1.setModel(new javax.swing.table.DefaultTableModel(
+        tblLecturesDetails.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null}
             },
@@ -101,7 +102,7 @@ public class AddLecturesFrame extends javax.swing.JFrame {
                 "Lecture ID", "Name", "Email", "Phone No", "Department", "Specialization"
             }
         ));
-        jScrollPane2.setViewportView(tblStudentsDetails1);
+        jScrollPane2.setViewportView(tblLecturesDetails);
 
         jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 900, 290));
 
@@ -273,6 +274,7 @@ public class AddLecturesFrame extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Failed to update lecture.");
         }
+        lectureController.loadAllLectures(tblLecturesDetails);
     }//GEN-LAST:event_btnUpdLecActionPerformed
 
     private void btnDelLecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelLecActionPerformed
@@ -288,6 +290,7 @@ public class AddLecturesFrame extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Failed to delete lecture.");
         }
+        lectureController.loadAllLectures(tblLecturesDetails);
     }//GEN-LAST:event_btnDelLecActionPerformed
 
     private void btnAddLecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddLecActionPerformed
@@ -305,6 +308,7 @@ public class AddLecturesFrame extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Failed to add lecture.");
         }
+        lectureController.loadAllLectures(tblLecturesDetails);
     }//GEN-LAST:event_btnAddLecActionPerformed
 
     private void txtLectureIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLectureIdActionPerformed
@@ -364,7 +368,7 @@ public class AddLecturesFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblClose1;
-    private javax.swing.JTable tblStudentsDetails1;
+    private javax.swing.JTable tblLecturesDetails;
     private javax.swing.JTextField txtLectureEmail;
     private javax.swing.JTextField txtLectureId;
     private javax.swing.JTextField txtLectureName;

@@ -23,6 +23,7 @@ public class AddDepartmentFrame extends javax.swing.JFrame {
         initComponents();
         Connection connection = DatabaseConnection.getConnection();
         departmentController = new DepartmentController(connection);
+        departmentController.loadAllDepartments(tblDepartmentDetails);
     }
 
     /**
@@ -40,7 +41,7 @@ public class AddDepartmentFrame extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblStudentsDetails1 = new javax.swing.JTable();
+        tblDepartmentDetails = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
         txtDepLocation = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
@@ -88,7 +89,7 @@ public class AddDepartmentFrame extends javax.swing.JFrame {
         jLabel6.setText("Data of Departments");
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, -1));
 
-        tblStudentsDetails1.setModel(new javax.swing.table.DefaultTableModel(
+        tblDepartmentDetails.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null}
             },
@@ -96,7 +97,7 @@ public class AddDepartmentFrame extends javax.swing.JFrame {
                 "Department ID", "Name", "Head of Department", "Location"
             }
         ));
-        jScrollPane2.setViewportView(tblStudentsDetails1);
+        jScrollPane2.setViewportView(tblDepartmentDetails);
 
         jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 900, 290));
 
@@ -258,7 +259,7 @@ public class AddDepartmentFrame extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Failed to update department.");
         }
-        
+        departmentController.loadAllDepartments(tblDepartmentDetails);
     }//GEN-LAST:event_btnUpdDepActionPerformed
 
     private void btnDelDepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelDepActionPerformed
@@ -274,6 +275,7 @@ public class AddDepartmentFrame extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Failed to delete department.");
         }
+        departmentController.loadAllDepartments(tblDepartmentDetails);
     }//GEN-LAST:event_btnDelDepActionPerformed
 
     private void btnAddDepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDepActionPerformed
@@ -289,6 +291,7 @@ public class AddDepartmentFrame extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Failed to add department.");
         } 
+        departmentController.loadAllDepartments(tblDepartmentDetails);
     }//GEN-LAST:event_btnAddDepActionPerformed
 
     private void txtDepIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDepIDActionPerformed
@@ -349,7 +352,7 @@ public class AddDepartmentFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblClose1;
-    private javax.swing.JTable tblStudentsDetails1;
+    private javax.swing.JTable tblDepartmentDetails;
     private javax.swing.JTextField txtDepHead;
     private javax.swing.JTextField txtDepID;
     private javax.swing.JTextField txtDepLocation;

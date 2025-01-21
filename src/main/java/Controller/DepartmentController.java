@@ -8,6 +8,9 @@ import Model.DepartmentModel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class DepartmentController {
     private Connection connection;
@@ -55,6 +58,27 @@ public class DepartmentController {
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
+        }
+    }
+    
+    // Method to load all departments into the JTable
+    public void loadAllDepartments(javax.swing.JTable table) {
+        try {
+            ArrayList<DepartmentModel> departments = DepartmentModel.getAllDepartments(); // Fetch all departments
+            DefaultTableModel model = (DefaultTableModel) table.getModel();
+            model.setRowCount(0); // Clear any previous data
+
+            // Add each department's data to the JTable model
+            for (DepartmentModel department : departments) {
+                model.addRow(new Object[]{
+                        department.getDepartmentId(),
+                        department.getName(),
+                        department.getHeadOfDepartment(),
+                        department.getLocation()
+                });
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
         }
     }
 }
