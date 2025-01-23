@@ -310,7 +310,12 @@ public class AddStudentFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_lblCloseMouseClicked
 
     private void btnClrStdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClrStdActionPerformed
-        
+        txtStudentID.setText("");
+        txtStudentName.setText("");
+        txtStudentPayment.setText("");
+        txtStudentPhoneNo.setText("");
+        cmbStudentCourse.setSelectedIndex(0);
+        cmbStudentDepartment.setSelectedIndex(0);
     }//GEN-LAST:event_btnClrStdActionPerformed
 
     private void txtStudentPaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStudentPaymentActionPerformed

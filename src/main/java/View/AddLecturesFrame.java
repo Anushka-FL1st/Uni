@@ -251,7 +251,12 @@ public class AddLecturesFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtSpealizationActionPerformed
 
     private void btnClrLecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClrLecActionPerformed
-        // TODO add your handling code here:
+        txtLectureEmail.setText("");
+        txtLectureId.setText("");
+        txtLectureName.setText("");
+        txtLecturePhoneNo.setText("");
+        txtSpealization.setText("");
+        cmbLectureDepartment.setSelectedIndex(0);
     }//GEN-LAST:event_btnClrLecActionPerformed
 
     private void btnUpdLecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdLecActionPerformed

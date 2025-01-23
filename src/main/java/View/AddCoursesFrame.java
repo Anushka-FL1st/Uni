@@ -234,7 +234,11 @@ public class AddCoursesFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCourseCreditActionPerformed
 
     private void btnClrCorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClrCorActionPerformed
-        // TODO add your handling code here:
+        txtCourseCredit.setText("");
+        txtCourseDepID.setText("");
+        txtCourseID.setText("");
+        txtCourseName.setText("");
+        cmbCourseDuration.setSelectedIndex(0);
     }//GEN-LAST:event_btnClrCorActionPerformed
 
     private void btnUpdCorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdCorActionPerformed

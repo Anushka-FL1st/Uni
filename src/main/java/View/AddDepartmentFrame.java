@@ -238,7 +238,10 @@ public class AddDepartmentFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDepNameActionPerformed
 
     private void btnClrDepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClrDepActionPerformed
-        // TODO add your handling code here:
+        txtDepHead.setText("");
+        txtDepID.setText("");
+        txtDepLocation.setText("");
+        txtDepName.setText("");
     }//GEN-LAST:event_btnClrDepActionPerformed
 
     private void btnUpdDepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdDepActionPerformed
