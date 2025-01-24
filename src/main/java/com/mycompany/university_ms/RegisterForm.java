@@ -92,12 +92,15 @@ public class RegisterForm extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setText("Username:");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 90, -1));
+
+        txtRegiUsername.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel2.add(txtRegiUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 260, 40));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setText("Password:");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 90, -1));
 
+        txtRegiPassword.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtRegiPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtRegiPasswordActionPerformed(evt);
@@ -140,6 +143,7 @@ public class RegisterForm extends javax.swing.JFrame {
         jLabel7.setText("Confirm Password:");
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 170, -1));
 
+        txtRegiConPassword.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtRegiConPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtRegiConPasswordActionPerformed(evt);

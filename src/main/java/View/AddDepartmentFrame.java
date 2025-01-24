@@ -9,7 +9,13 @@ import Model.DatabaseConnection;
 import Model.DepartmentModel;
 import com.mycompany.university_ms.HomePage;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -54,6 +60,7 @@ public class AddDepartmentFrame extends javax.swing.JFrame {
         btnAddDep = new javax.swing.JButton();
         txtDepID = new javax.swing.JTextField();
         txtDepHead = new javax.swing.JTextField();
+        btnDepartmentsReport = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -80,7 +87,7 @@ public class AddDepartmentFrame extends javax.swing.JFrame {
                 btnBack4ActionPerformed(evt);
             }
         });
-        jPanel3.add(btnBack4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 620, 120, 30));
+        jPanel3.add(btnBack4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 620, 120, 30));
 
         jLabel9.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS Zenbook\\Downloads\\Department.png")); // NOI18N
         jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 80, 80));
@@ -188,6 +195,17 @@ public class AddDepartmentFrame extends javax.swing.JFrame {
             }
         });
         jPanel3.add(txtDepHead, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 490, 160, 30));
+
+        btnDepartmentsReport.setBackground(new java.awt.Color(153, 51, 255));
+        btnDepartmentsReport.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnDepartmentsReport.setForeground(new java.awt.Color(255, 255, 255));
+        btnDepartmentsReport.setText("REPORT");
+        btnDepartmentsReport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDepartmentsReportActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnDepartmentsReport, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 620, 120, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -305,6 +323,24 @@ public class AddDepartmentFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDepHeadActionPerformed
 
+    private void btnDepartmentsReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepartmentsReportActionPerformed
+        try{
+          Class.forName("com.mysql.cj.jdbc.Driver");
+          Connection connection = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/University?useSSL=false", 
+                "root", 
+                "Anu200439"
+            );
+          String reportPath = "C:\\Users\\ASUS Zenbook\\Documents\\NIBM Diploma Level (1 Year)\\EAD - Enterprice Application Develpment 1\\Course Work\\Report\\DepartmentsDetails.jrxml";
+          JasperReport jr = JasperCompileManager.compileReport(reportPath);
+          JasperPrint jp = JasperFillManager.fillReport(jr,null,connection);
+          JasperViewer.viewReport(jp);
+        }
+        catch (Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_btnDepartmentsReportActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -345,6 +381,7 @@ public class AddDepartmentFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnBack4;
     private javax.swing.JButton btnClrDep;
     private javax.swing.JButton btnDelDep;
+    private javax.swing.JButton btnDepartmentsReport;
     private javax.swing.JButton btnUpdDep;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;

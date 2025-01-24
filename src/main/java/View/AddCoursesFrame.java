@@ -10,7 +10,13 @@ import Model.CourseModel;
 import Model.DatabaseConnection;
 import com.mycompany.university_ms.HomePage;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -57,6 +63,7 @@ public class AddCoursesFrame extends javax.swing.JFrame {
         btnDelCor = new javax.swing.JButton();
         btnAddCor = new javax.swing.JButton();
         txtCourseID = new javax.swing.JTextField();
+        btnCourseReport = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -84,7 +91,7 @@ public class AddCoursesFrame extends javax.swing.JFrame {
                 btnBack3ActionPerformed(evt);
             }
         });
-        jPanel3.add(btnBack3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 620, 120, 30));
+        jPanel3.add(btnBack3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 620, 120, 30));
 
         jLabel9.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS Zenbook\\Downloads\\Courses.png")); // NOI18N
         jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 70, 80));
@@ -200,6 +207,17 @@ public class AddCoursesFrame extends javax.swing.JFrame {
         });
         jPanel3.add(txtCourseID, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 420, 130, 30));
 
+        btnCourseReport.setBackground(new java.awt.Color(153, 51, 255));
+        btnCourseReport.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnCourseReport.setForeground(new java.awt.Color(255, 255, 255));
+        btnCourseReport.setText("REPORT");
+        btnCourseReport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCourseReportActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnCourseReport, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 620, 120, 30));
+
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, 660));
 
         setSize(new java.awt.Dimension(941, 659));
@@ -302,6 +320,24 @@ public class AddCoursesFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCourseIDActionPerformed
 
+    private void btnCourseReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCourseReportActionPerformed
+        try{
+          Class.forName("com.mysql.cj.jdbc.Driver");
+          Connection connection = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/University?useSSL=false", 
+                "root", 
+                "Anu200439"
+            );
+          String reportPath = "C:\\Users\\ASUS Zenbook\\Documents\\NIBM Diploma Level (1 Year)\\EAD - Enterprice Application Develpment 1\\Course Work\\Report\\CoursesDetails.jrxml";
+          JasperReport jr = JasperCompileManager.compileReport(reportPath);
+          JasperPrint jp = JasperFillManager.fillReport(jr,null,connection);
+          JasperViewer.viewReport(jp);
+        }
+        catch (Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_btnCourseReportActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -341,6 +377,7 @@ public class AddCoursesFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnAddCor;
     private javax.swing.JButton btnBack3;
     private javax.swing.JButton btnClrCor;
+    private javax.swing.JButton btnCourseReport;
     private javax.swing.JButton btnDelCor;
     private javax.swing.JButton btnUpdCor;
     private javax.swing.JComboBox<String> cmbCourseDuration;

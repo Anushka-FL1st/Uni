@@ -33,6 +33,7 @@ View\AddLecturesFrame$9.class
 com\mycompany\university_ms\RegisterForm$5.class
 View\AddStudentFrame$7.class
 View\AddDepartmentFrame$10.class
+View\AddCoursesFrame$12.class
 com\mycompany\university_ms\HomePage$5.class
 com\mycompany\university_ms\University_MS.class
 View\AddStudentFrame$14.class
@@ -54,6 +55,7 @@ View\AddStudentFrame$12.class
 View\AddStudentFrame$8.class
 View\AddCoursesFrame$7.class
 com\mycompany\university_ms\LoginFrame$6.class
+View\AddLecturesFrame$13.class
 View\AddStudentFrame$15.class
 View\AddStudentFrame$4.class
 Controller\StudentController.class
@@ -68,6 +70,7 @@ View\AddLecturesFrame$4.class
 View\AddStudentFrame$2.class
 View\AddCoursesFrame$3.class
 View\AddLecturesFrame$10.class
+View\AddDepartmentFrame$12.class
 View\AddDepartmentFrame$2.class
 View\AddLecturesFrame$12.class
 com\mycompany\university_ms\HomePage$4.class
@@ -79,7 +82,7 @@ Model\StudentModel.class
 com\mycompany\university_ms\RegisterForm$4.class
 View\AddCoursesFrame$11.class
 View\AddCoursesFrame$6.class
-com\mycompany\university_ms\HomePage$7.class
+View\AddStudentFrame$16.class
 View\AddCoursesFrame$9.class
 View\AddLecturesFrame$1.class
 View\AddStudentFrame$5.class

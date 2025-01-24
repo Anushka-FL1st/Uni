@@ -9,7 +9,13 @@ import Model.DatabaseConnection;
 import Model.LectureModel;
 import com.mycompany.university_ms.HomePage;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -37,7 +43,7 @@ public class AddLecturesFrame extends javax.swing.JFrame {
 
         jPanel3 = new javax.swing.JPanel();
         lblClose1 = new javax.swing.JLabel();
-        btnBack2 = new javax.swing.JButton();
+        btnLecturesReport = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -58,6 +64,7 @@ public class AddLecturesFrame extends javax.swing.JFrame {
         btnDelLec = new javax.swing.JButton();
         btnAddLec = new javax.swing.JButton();
         txtLectureId = new javax.swing.JTextField();
+        btnBack3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -76,16 +83,16 @@ public class AddLecturesFrame extends javax.swing.JFrame {
         });
         jPanel3.add(lblClose1, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 0, -1, -1));
 
-        btnBack2.setBackground(new java.awt.Color(153, 51, 255));
-        btnBack2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnBack2.setForeground(new java.awt.Color(255, 255, 255));
-        btnBack2.setText("BACK");
-        btnBack2.addActionListener(new java.awt.event.ActionListener() {
+        btnLecturesReport.setBackground(new java.awt.Color(153, 51, 255));
+        btnLecturesReport.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnLecturesReport.setForeground(new java.awt.Color(255, 255, 255));
+        btnLecturesReport.setText("REPORT");
+        btnLecturesReport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBack2ActionPerformed(evt);
+                btnLecturesReportActionPerformed(evt);
             }
         });
-        jPanel3.add(btnBack2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 620, 120, 30));
+        jPanel3.add(btnLecturesReport, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 620, 120, 30));
 
         jLabel9.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS Zenbook\\Downloads\\icons8-speech-64.png")); // NOI18N
         jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 70, 80));
@@ -212,6 +219,17 @@ public class AddLecturesFrame extends javax.swing.JFrame {
         });
         jPanel3.add(txtLectureId, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 420, 130, 30));
 
+        btnBack3.setBackground(new java.awt.Color(153, 51, 255));
+        btnBack3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnBack3.setForeground(new java.awt.Color(255, 255, 255));
+        btnBack3.setText("BACK");
+        btnBack3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBack3ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnBack3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 620, 120, 30));
+
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, 660));
 
         setSize(new java.awt.Dimension(941, 659));
@@ -226,13 +244,23 @@ public class AddLecturesFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_lblClose1MouseClicked
 
-    private void btnBack2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack2ActionPerformed
-
-        HomePage homePage = new HomePage();
-        homePage.setVisible(true);
-        AddLecturesFrame.this.setVisible(false);
-
-    }//GEN-LAST:event_btnBack2ActionPerformed
+    private void btnLecturesReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLecturesReportActionPerformed
+        try{
+          Class.forName("com.mysql.cj.jdbc.Driver");
+          Connection connection = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/University?useSSL=false", 
+                "root", 
+                "Anu200439"
+            );
+          String reportPath = "C:\\Users\\ASUS Zenbook\\Documents\\NIBM Diploma Level (1 Year)\\EAD - Enterprice Application Develpment 1\\Course Work\\Report\\LecturesDetails.jrxml";
+          JasperReport jr = JasperCompileManager.compileReport(reportPath);
+          JasperPrint jp = JasperFillManager.fillReport(jr,null,connection);
+          JasperViewer.viewReport(jp);
+        }
+        catch (Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_btnLecturesReportActionPerformed
 
     private void txtLecturePhoneNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLecturePhoneNoActionPerformed
         // TODO add your handling code here:
@@ -320,6 +348,12 @@ public class AddLecturesFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtLectureIdActionPerformed
 
+    private void btnBack3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack3ActionPerformed
+        HomePage homePage = new HomePage();
+        homePage.setVisible(true);
+        AddLecturesFrame.this.setVisible(false);
+    }//GEN-LAST:event_btnBack3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -357,9 +391,10 @@ public class AddLecturesFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddLec;
-    private javax.swing.JButton btnBack2;
+    private javax.swing.JButton btnBack3;
     private javax.swing.JButton btnClrLec;
     private javax.swing.JButton btnDelLec;
+    private javax.swing.JButton btnLecturesReport;
     private javax.swing.JButton btnUpdLec;
     private javax.swing.JComboBox<String> cmbLectureDepartment;
     private javax.swing.JLabel jLabel10;

@@ -113,7 +113,6 @@ public class HomePage extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         lblAllLectures = new javax.swing.JLabel();
-        btnReport = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -282,17 +281,6 @@ public class HomePage extends javax.swing.JFrame {
 
         jPanel2.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, 190, 120));
 
-        btnReport.setBackground(new java.awt.Color(153, 51, 255));
-        btnReport.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnReport.setForeground(new java.awt.Color(255, 255, 255));
-        btnReport.setText("Generate Report");
-        btnReport.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnReportActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btnReport, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 200, 130, -1));
-
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 630, 660));
 
         setSize(new java.awt.Dimension(941, 659));
@@ -341,97 +329,6 @@ public class HomePage extends javax.swing.JFrame {
         HomePage.this.setVisible(false);
     }//GEN-LAST:event_btnAddLecturesActionPerformed
 
-    private void btnReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportActionPerformed
-        
-//        int response = JOptionPane.showConfirmDialog(null, "Generate Report? Status = 'Yes'", "Confirm", JOptionPane.YES_NO_OPTION);
-//        if (response == JOptionPane.YES_OPTION) {
-//            String pdfPath = "University_Report.pdf";
-//
-//            try (Connection connection = DriverManager.getConnection(
-//                    "jdbc:mysql://localhost:3306/your_database_name",
-//                    "your_username",
-//                    "your_password"
-//            )) {
-//                // Create the PDF document
-//                Document document = new Document();
-//                PdfWriter.getInstance(document, new FileOutputStream(pdfPath));
-//                document.open();
-//
-//                // Title and date
-//                document.add(new Paragraph("University Management System Report", FontFactory.getFont(FontFactory.HELVETICA_BOLD, 18, BaseColor.BLUE)));
-//                document.add(new Paragraph("Generated on: " + new java.util.Date()));
-//                document.add(new Paragraph("\n"));
-//
-//                // Fetch and add student details
-//                addTableToDocument(document, connection, "SELECT * FROM students", "Student Details", new String[]{"ID", "Name", "Email", "Phone", "Department"});
-//
-//                // Fetch and add lecture details
-//                addTableToDocument(document, connection, "SELECT * FROM lectures", "Lecture Details", new String[]{"ID", "Name", "Email", "Phone", "Specialization"});
-//
-//                // Fetch and add course details
-//                addTableToDocument(document, connection, "SELECT * FROM courses", "Course Details", new String[]{"ID", "Name", "Credits", "Department ID", "Duration"});
-//
-//                // Fetch and add department details
-//                addTableToDocument(document, connection, "SELECT * FROM departments", "Department Details", new String[]{"ID", "Name", "Head", "Location"});
-//
-//                // Add summary (counts and income)
-//                document.add(new Paragraph("\nSummary:", FontFactory.getFont(FontFactory.HELVETICA_BOLD, 14)));
-//                int studentCount = getCount(connection, "students");
-//                int lectureCount = getCount(connection, "lectures");
-//                double totalIncome = getTotalIncome(connection);
-//                document.add(new Paragraph("Total Students: " + studentCount));
-//                document.add(new Paragraph("Total Lectures: " + lectureCount));
-//                document.add(new Paragraph("Total Income: Rs. " + totalIncome));
-//
-//                // Close the document
-//                document.close();
-//
-//                JOptionPane.showMessageDialog(null, "Report generated successfully! Saved as " + pdfPath);
-//            } catch (Exception ex) {
-//                JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
-//            }
-//        }
-//    }
-//
-//    private void addTableToDocument(Document document, Connection connection, String query, String sectionTitle, String[] columnNames) throws Exception {
-//        document.add(new Paragraph(sectionTitle, FontFactory.getFont(FontFactory.HELVETICA_BOLD, 14)));
-//        PdfPTable table = new PdfPTable(columnNames.length);
-//        for (String columnName : columnNames) {
-//            table.addCell(columnName);
-//        }
-//
-//        PreparedStatement ps = connection.prepareStatement(query);
-//        ResultSet rs = ps.executeQuery();
-//        while (rs.next()) {
-//            for (int i = 1; i <= columnNames.length; i++) {
-//                table.addCell(rs.getString(i));
-//            }
-//        }
-//        document.add(table);
-//        document.add(new Paragraph("\n"));
-//    }
-//
-//    private int getCount(Connection connection, String tableName) throws Exception {
-//        String sql = "SELECT COUNT(*) AS count FROM " + tableName;
-//        PreparedStatement ps = connection.prepareStatement(sql);
-//        ResultSet rs = ps.executeQuery();
-//        if (rs.next()) {
-//            return rs.getInt("count");
-//        }
-//        return 0;
-//    }
-//
-//    private double getTotalIncome(Connection connection) throws Exception {
-//        String sql = "SELECT SUM(payment) AS total_income FROM students";
-//        PreparedStatement ps = connection.prepareStatement(sql);
-//        ResultSet rs = ps.executeQuery();
-//        if (rs.next()) {
-//            return rs.getDouble("total_income");
-//        }
-//        return 0.0;
-        
-    }//GEN-LAST:event_btnReportActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -478,7 +375,6 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JButton btnAddLectures;
     private javax.swing.JButton btnAddStudents;
     private javax.swing.JButton btnLogOut;
-    private javax.swing.JButton btnReport;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
