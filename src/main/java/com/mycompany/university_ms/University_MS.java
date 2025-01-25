@@ -4,6 +4,7 @@
  */
 package com.mycompany.university_ms;
 
+import View.LoginFrame;
 import javax.swing.SwingUtilities;
 
 /**

@@ -7,7 +7,6 @@ package View;
 import Controller.LectureController;
 import Model.DatabaseConnection;
 import Model.LectureModel;
-import com.mycompany.university_ms.HomePage;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import javax.swing.JOptionPane;

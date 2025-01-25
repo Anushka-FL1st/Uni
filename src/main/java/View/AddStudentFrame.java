@@ -7,8 +7,6 @@ package View;
 import Controller.StudentController;
 import Model.DatabaseConnection;
 import Model.StudentModel;
-import com.mycompany.university_ms.HomePage;
-import com.mycompany.university_ms.LoginFrame;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import javax.swing.JOptionPane;

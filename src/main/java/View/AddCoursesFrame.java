@@ -8,7 +8,6 @@ import Controller.CourseController;
 import Controller.LectureController;
 import Model.CourseModel;
 import Model.DatabaseConnection;
-import com.mycompany.university_ms.HomePage;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import javax.swing.JOptionPane;
