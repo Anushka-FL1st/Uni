@@ -41,7 +41,6 @@ public class LectureController {
     }
 
     
-    // Update Student
     public boolean updateStudent(LectureModel lecture) {
         String query = "UPDATE lectures SET name = ?, email = ?, phone_no = ?, department = ?, specialization = ? WHERE lecture_id = ?";
     try (PreparedStatement ps = connection.prepareStatement(query)) {
@@ -71,7 +70,7 @@ public class LectureController {
         }
     }
     
-    // Load all lectures into JTable
+    
     public void loadAllLectures(javax.swing.JTable table) {
         try {
             ArrayList<LectureModel> lectures = LectureModel.getAllLectures(); // Fetch all lectures

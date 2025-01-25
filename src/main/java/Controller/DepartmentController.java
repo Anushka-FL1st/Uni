@@ -61,14 +61,14 @@ public class DepartmentController {
         }
     }
     
-    // Method to load all departments into the JTable
+
     public void loadAllDepartments(javax.swing.JTable table) {
         try {
             ArrayList<DepartmentModel> departments = DepartmentModel.getAllDepartments(); // Fetch all departments
             DefaultTableModel model = (DefaultTableModel) table.getModel();
-            model.setRowCount(0); // Clear any previous data
+            model.setRowCount(0); 
 
-            // Add each department's data to the JTable model
+        
             for (DepartmentModel department : departments) {
                 model.addRow(new Object[]{
                         department.getDepartmentId(),
@@ -77,7 +77,8 @@ public class DepartmentController {
                         department.getLocation()
                 });
             }
-        } catch (Exception e) {
+        } 
+        catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
         }
     }

@@ -50,7 +50,6 @@ public class StudentModel {
         return department;
     }
     
-     // Static method to fetch all students
     public static ArrayList<StudentModel> getAllStudents() {
         ArrayList<StudentModel> students = new ArrayList<>();
         try {

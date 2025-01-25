@@ -18,7 +18,6 @@ public class LectureModel {
     private String department;
     private String specialization;
 
-    // Constructor
     public LectureModel(String lectureId, String name, String email, String phoneNo, String department, String specialization) {
         this.lectureId = lectureId;
         this.name = name;
@@ -28,7 +27,6 @@ public class LectureModel {
         this.specialization = specialization;
     }
 
-    // Getters and Setters
     public String getLectureId() { return lectureId; }
     public void setLectureId(String lectureId) { this.lectureId = lectureId; }
 
@@ -47,7 +45,6 @@ public class LectureModel {
     public String getSpecialization() { return specialization; }
     public void setSpecialization(String specialization) { this.specialization = specialization; }
     
-    // Fetch all lectures from the database
     public static ArrayList<LectureModel> getAllLectures() {
         ArrayList<LectureModel> lectures = new ArrayList<>();
         try {

@@ -187,7 +187,7 @@ public class RegisterForm extends javax.swing.JFrame {
     
     if (password.equals(conpassword)) {
         try {
-            // DatabaseConnection 
+            
             Connection conn = DatabaseConnection.getConnection();
     
             PreparedStatement ps = conn.prepareStatement("INSERT INTO Admins VALUES (?, ?)");

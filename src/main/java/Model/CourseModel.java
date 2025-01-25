@@ -37,7 +37,6 @@ public class CourseModel {
     public String getDuration() { return duration; }
     public void setDuration(String duration) { this.duration = duration; }
     
-    // Static method to fetch all courses from the database
     public static ArrayList<CourseModel> getAllCourses() {
         ArrayList<CourseModel> courses = new ArrayList<>();
         try {

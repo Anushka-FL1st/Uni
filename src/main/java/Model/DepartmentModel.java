@@ -22,7 +22,7 @@ public class DepartmentModel {
         this.location = location;
     }
 
-    // Getters and setters
+   
     public String getDepartmentId() { return departmentId; }
     public void setDepartmentId(String departmentId) { this.departmentId = departmentId; }
     public String getName() { return name; }
@@ -32,7 +32,7 @@ public class DepartmentModel {
     public String getLocation() { return location; }
     public void setLocation(String location) { this.location = location; }
     
-    // Method to fetch all departments from the database
+   
     public static ArrayList<DepartmentModel> getAllDepartments() {
         ArrayList<DepartmentModel> departments = new ArrayList<>();
         try {

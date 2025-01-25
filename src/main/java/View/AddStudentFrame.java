@@ -23,17 +23,17 @@ import net.sf.jasperreports.view.JasperViewer;
  * @author ASUS Zenbook
  */
 public class AddStudentFrame extends javax.swing.JFrame {
-    // Create the Controller varable
+    
     private StudentController studentController;
 
     
     public AddStudentFrame() {
         initComponents();
         
-        // Get the database connection
+        
     Connection connection = DatabaseConnection.getConnection();
     
-    // Initialize the controller
+
     studentController = new StudentController(connection);
     studentController.loadAllStudents(tblStudentsDetails);
     

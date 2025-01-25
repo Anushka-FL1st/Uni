@@ -12,7 +12,7 @@ public class DatabaseConnection {
     
     private static Connection connection = null;
     
-    // Constructor එකක් හරහා Database සම්බන්ධතාවය ආරම්භ කරන්න.
+    
     public DatabaseConnection() {
         DatabaseConnect();
     }
